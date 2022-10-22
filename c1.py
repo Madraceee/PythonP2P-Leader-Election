@@ -1,7 +1,6 @@
 import sys
 import time
 
-
 from BullyNode import BullyNode
 
 if( len(sys.argv) < 2):
@@ -22,7 +21,6 @@ node1.connect_with_node('127.0.0.1', 8003)
 
 
 while(1):
-    
     print("1.Send message")
     print("2.Quit other nodes")
     entry= int(input())

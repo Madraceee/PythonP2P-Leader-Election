@@ -1,5 +1,4 @@
 from p2pnetwork.node import Node
-
 #making changes
 
 class BullyNode(Node):
@@ -8,9 +7,12 @@ class BullyNode(Node):
         super(BullyNode, self).__init__(host, port, id, callback, max_connections)
         print("BullyNode : Started")
     
-
     def node_message(self, node, data):
-        print("Message from " + node.id + ": " + str(data))
+        if(data=="STOP"):
+            self.stop()
+            exit(1)
+        else:
+            print("Message from " + node.id + ": " + str(data))
 
     def inbound_node_disconnected(self, node):
         if(node.id == 1):
