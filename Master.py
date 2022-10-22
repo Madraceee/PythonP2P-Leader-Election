@@ -21,7 +21,9 @@ while True:
         master.send_to_nodes(data)
     if choice==2:
         n = int(input("Enter ID:"))
-        master.send_to_node(n,"PVT Message")
+        data = {"name":"Master","message":"Node 2 Node"}
+        print(master.all_nodes)
+        master.send_to_node(master.all_nodes[n],data,'none')
     if choice==3:
         master.stop()
         break
