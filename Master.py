@@ -10,8 +10,18 @@ N = int(input("Enter the number of systems :"))
 
 print('Connecting to Nodes')
 
+PORTS = []
+
 for i in range(N):
     master.connect_with_node('127.0.0.1', 8001+i)
+    PORTS.append(8001+i)
+
+print(PORTS)
+clients = 'PORTS:8000,'+','.join(str(i) for i in PORTS)
+
+print(clients)
+
+master.send_to_nodes({"name":"Master","message":clients})
 
 while True:
     print("1) Broadcast Message \n2) Node-to-Node Message\n3) Terminate Master\n4) Terminate All nodes")

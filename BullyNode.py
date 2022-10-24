@@ -11,6 +11,9 @@ class BullyNode(Node):
         if(data=="STOP"):
             self.stop()
             exit(1)
+        elif data["message"][:5]=="PORTS":
+            for i in data["message"][6:].split(","):
+                self.connect_with_node('127.0.0.1',int(i))
         else:
             print("Message from " + node.id + ": " + str(data))
 
